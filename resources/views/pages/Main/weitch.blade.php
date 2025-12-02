@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Panda</title>
+</head>
+<body>
+
+<!-- nav start -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary ">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="" style="width: 150px;"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+     <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{ route('index.page') }}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('shoe.page') }}">Shoes</a>
+        </li>
+            <li class="nav-item">
+          <a class="nav-link" href="{{ route('beg.page') }}">Beg</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="{{ route('watch.page') }}">Watch</a>
+        </li>
+            <li class="nav-item">
+          <a class="nav-link" href="{{ route('contact.page') }}">Contact Us</a>
+        </li>
+       
+      </ul>
+      
+      <form class="d-flex " role="search">
+        <a href="weitch.html " class="me-3 fs-4" target="_blank">
+          <i class="fa-solid fa-heart " style="color: black;" id="love"></i>
+        </a>
+       {{--  <a href="{{ route('cart.page') }}" class="me-2 fs-4">
+        <i class="fa-solid fa-cart-shopping" style="color: black;"></i>
+       </a>  --}}
+        <a class="btn btn-outline-success" href="">singIn</a>
+        <a class="btn btn-outline-success mx-2" href="">Login</a>
+      </form>
+    </div>
+  </div>
+</nav>
+<!-- weitch list start -->
+
+<!-- weitch list end -->
+
+<main class="page mt-5">
+	 	<section class="shopping-cart dark">
+	 		<div class="container">
+		        <div class="block-heading">
+		          <h2 class="text-center">Weatch Cart</h2>
+		          
+		        </div>
+		        <div class="content mt-3">
+	 				<div class="row">
+	 					<div class="col-md-12 col-lg-8">
+	 						<div class="items">
+				 				<div class="product">
+				 					<div class="row">
+					 					<div class="col-md-3">
+					 						<img class="img-fluid mx-auto d-block image" src="img/shoe-1.png">
+					 					</div>
+					 					<div class="col-md-8">
+					 						<div class="info">
+						 						<div class="row">
+							 						<div class="col-md-5 product-name">
+							 							<div class="product-name">
+								 							<a href="#">Lorem Ipsum dolor</a>
+								 							<div class="product-info">
+									 							<div>Display: <span class="value">5 inch</span></div>
+									 							<div>RAM: <span class="value">4GB</span></div>
+									 							<div>Memory: <span class="value">32GB</span></div>
+									 						</div>
+									 					</div>
+							 						</div>
+							 						
+							 						<div class="col-md-3 price">
+							 							<span>$120</span>
+							 						</div>
+                                                    <div class="col-md-4">
+                                                        <div class="btn-group mt-3 ">
+                       <div> <a class="btn btn-outline-secondary" href="cart.html" >Add to cart</a></div>
+                        <div><a class="btn btn-outline-success mx-3" href="cheackout.html" target="_blank">BUY NOW</a></div>
+                         
+                    </div>
+
+                                                    </div>
+							 					</div>
+							 				</div>
+					 					</div>
+					 				</div>
+				 				</div>
+				 				<div class="product">
+				 					<div class="row">
+					 					<div class="col-md-3">
+					 						<img class="img-fluid mx-auto d-block image" src="img/bag-1.png">
+					 					</div>
+					 					<div class="col-md-8">
+					 						<div class="info">
+						 						<div class="row">
+							 						<div class="col-md-5 product-name">
+							 							<div class="product-name">
+								 							<a href="#">Lorem Ipsum dolor</a>
+								 							<div class="product-info">
+									 							<div>Display: <span class="value">5 inch</span></div>
+									 							<div>RAM: <span class="value">4GB</span></div>
+									 							<div>Memory: <span class="value">32GB</span></div>
+									 						</div>
+									 					</div>
+							 						</div>
+							 						
+							 						<div class="col-md-3 price">
+							 							<span>$120</span>
+							 						</div>
+                                                    <div class="col-md-4">
+                                                        <div class="btn-group mt-3 ">
+                       <div> <a class="btn btn-outline-secondary" href="cart.html" >Add to cart</a></div>
+                        <div><a class="btn btn-outline-success mx-3" href="cheackout.html" target="_blank">BUY NOW</a></div>
+                         
+                    </div>
+
+                                                    </div>
+							 					</div>
+							 				</div>
+					 					</div>
+					 				</div>
+				 				</div>
+				 				<div class="product">
+				 					<div class="row">
+					 					<div class="col-md-3">
+					 						<img class="img-fluid mx-auto d-block image" src="img/watch-1.avif">
+					 					</div>
+					 					<div class="col-md-8">
+					 						<div class="info">
+						 						<div class="row">
+							 						<div class="col-md-5 product-name">
+							 							<div class="product-name">
+								 							<a href="#">Lorem Ipsum dolor</a>
+								 							<div class="product-info">
+									 							<div>Display: <span class="value">5 inch</span></div>
+									 							<div>RAM: <span class="value">4GB</span></div>
+									 							<div>Memory: <span class="value">32GB</span></div>
+									 						</div>
+									 					</div>
+							 						</div>
+							 						
+							 						<div class="col-md-3 price">
+							 							<span>$120</span>
+							 						</div>
+                                                    <div class="col-md-4">
+                                                        <div class="btn-group mt-3 ">
+                       <div> <a class="btn btn-outline-secondary" href="cart.html" >Add to cart</a></div>
+                        <div><a class="btn btn-outline-success mx-3" href="cheackout.html" target="_blank">BUY NOW</a></div>
+                         
+                    </div>
+
+                                                    </div>
+							 					</div>
+							 				</div>
+					 					</div>
+					 				</div>
+				 				</div>
+				 			</div>
+			 			</div>
+			 
+		 			</div> 
+		 		</div>
+	 		</div>
+		</section>
+         <!-- footer start -->
+
+    <div class="container text-center py-5">
+      <h1>LET'S STAY IN TOUCH</h1>
+      <p>Get updates on sales, specials and more</p>
+      <a class="btn btn-danger text-uppercase fw-bold" href="#">Subscribe Now</a>
+    </div>
+
+    <footer>
+      <div class="container text-center mt-5">
+        <p>© Panda Commerce with Bootstrap 2025 All right reserved <span class="text-primary"> Abujor </span></p>
+      </div>
+    </footer>
+
+    <!-- footer end -->
+    
+	</main>
+
+
+@include('common-section.Footer')
