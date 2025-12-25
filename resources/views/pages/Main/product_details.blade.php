@@ -22,7 +22,7 @@
                         <h6 class="mx-2"> <sub> <span> TK <del>{{$product->price}}</del></sub> </span></h6>
                     </div>
                     <div class="discount_price">
-                      <h4>Discount price: <span>TK{{$product->discount_price}}</span></h4>
+                        <h4>Discount price: <span>TK{{$product->discount_price}}</span></h4>
 
 
                     </div>
@@ -30,30 +30,53 @@
                         <h4>Category: <span c>{{$product->catagory}}</span></h4>
 
                     </div>
-                    
+
                     <div class="status">
-                        <h4>Status: <span class="text-success">In Stock</span> <sub><span>(100<sub>pcs</sub>)</span></sub></h4>
+                        <h4>Status: <span class="text-success">In Stock</span>
+                            <sub><span>(100<sub>pcs</sub>)</span></sub>
+                        </h4>
                     </div>
                     <div class="Quantity">
                         <h5>Quantity: <span>{{$product->quantity}}</span></h5>
                     </div>
 
-                    <div class="btn-group mt-3">
-                       <form action="{{ route('add_cart.page',$product->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('details-add-to-cart') }}" method="POST">
                         @csrf
-                        @method('POST')
-                        <input type="number" value="1" min="1">
-                        <input type="submit" value="Add to cart" class="btn btn-success">
-                      
-                      </form>
+                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                        <div class="wrap d-flex mb-3">
+                            <div class="dec " id="dec">-</div>
+                            <input type="text" name="quantity" id="quantity" value="1" class="quantity">
+                            <div class="inc" id="inc">+</div>
+                        </div>
 
-                        <div><a class="btn btn-outline-success mx-3" href="{{ route('cheackout.page') }}" target="_blank">BUY NOW</a></div>
-                         
+                        <button type="submit" name="action" value="add_to_cart" class="btn btn-success">Add To
+                            Cart</button>
+                        <button type="submit" name="action" value="buy_now" class="btn btn-success">Buy Now</button>
+
+                    </form>
+                    {{-- <div class="mt-4">
+
+                        <div class="wrap d-flex ">
+                            <div class="dec " id="dec">-</div>
+                            <div class="value" id="value">1</div>
+                            <div class="inc" id="inc">+</div>
+                        </div>
                     </div>
+
+                    <div class="btn-group mt-3">
+                        <div>
+                            <a href="{{ route('add-to-cart', $product->id) }}" class="btn btn-success">Add To Cart</a>
+                        </div>
+
+                        <div>
+                            <a class="btn btn-success mx-3" href="{{ route('payment', $product->id) }}">BUY NOW</a>
+                        </div>
+
+                    </div> --}}
 
                     <div>
                         <div class="description mt-3" style="width: 70%;">
-                        <p>{{$product->description}}</p>
+                            <p>{{$product->description}}</p>
                         </div>
                     </div>
                 </div>

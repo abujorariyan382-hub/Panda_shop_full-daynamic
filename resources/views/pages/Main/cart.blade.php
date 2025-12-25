@@ -25,12 +25,16 @@
 							<tbody>
 								@php
 									$i = 1;
+									$sub_total = 0;
 								@endphp
-								@foreach ($cart as $item)
+
+								@forelse ($cart as $key => $item)
+									{{--  {{ dd( $item) }}  --}}
+
 									<tr>
 										<td>{{ $i }}</td>
 										<td>
-											{{-- <img width="80" src="{{ asset('storage/'. $item['image']) }}" alt=""> --}}
+											<img width="80" src="{{ asset('storage/'. $item['photo']) }}" alt="">
 										</td>
 										<td>{{ $item['name'] }}</td>
 										<td>{{ $item['price'] }}</td>
@@ -39,7 +43,7 @@
 
 										<td>
 
-											<a href="{{ route('add-tocart-delete', $item['name']) }}"
+											<a href="{{ route('add-tocart-delete', $item['id']) }}"
 												class="btn btn-danger">Delete</a>
 										</td>
 
@@ -47,8 +51,16 @@
 
 									@php
 										$i++;
+										$sub_total += $item['price'] * $item['quantity'];
 									@endphp
-								@endforeach
+								@empty
+									<tr>
+										<td colspan="7" class="text-center">No items in cart</td>
+									</tr>
+								@endforelse
+
+
+								
 
 							</tbody>
 						</table>
@@ -65,15 +77,16 @@
 						<div class="summary">
 							<h3>Summary</h3>
 							<div class="summary-item"><span class="text">Subtotal</span><span
-									class="price">{{ $item['price'] += $item['price'] }}</span></div>
+									class="price">{{$sub_total }}</span></div>
 							<div class="summary-item"><span class="text">Discount</span><span class="price">$0</span>
 							</div>
 							<div class="summary-item"><span class="text">Shipping</span><span
 									class="price">{{ $shipping = 150 }}</span></div>
 							<div class="summary-item"><span class="text">Total</span><span
-									class="price">{{ $item['price'] += $shipping }}</span></div>
-							<a href="{{ route('cheackout.page') }}" class="text-decoration-none"> <button type="button"
+									class="price">{{ $sub_total + $shipping }}</span></div>
+							<a href="{{ route('payment',$item['id']) }}" class="text-decoration-none"> <button type="button"
 									class="btn btn-primary btn-lg btn-block">Checkout</button> </a>
+									{{--  {{ dd($item) }}  --}}
 						</div>
 
 					</div>

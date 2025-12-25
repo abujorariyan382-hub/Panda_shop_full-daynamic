@@ -57,13 +57,18 @@ class PagesController extends Controller
     public function cart()
     {
         $cart = session()->get('cart', []);
-        return view('pages.Main.cart', compact('cart'));
+        $byenow = session()->get('byenow', []);
+        return view('pages.Main.cart', compact('cart','byenow'));
     }
 
-    public function cheackout()
-    {
-        return view('pages.Main.cheackout');
+    public function cheackout(){
+        // $cheackout = session()->get('cheackout', []);
+        $cheackout = session()->get('cart', []);
+
+        return view('pages.Main.cheackout',compact('cheackout'));
     }
+       
+        
 
     public function contact()
     {
@@ -85,5 +90,10 @@ class PagesController extends Controller
         $data['bags'] = ProductPage::where('catagory', '=', 'Beg')->get();
 
         return view('pages.Main.shop',with($data));
+    }
+
+
+    public function Thank(){
+        return view('pages.Main.Thank');
     }
 }

@@ -125,11 +125,9 @@ class ProductController extends Controller
     }
 
 
-    public function addToCart($id){
-        $product = ProductPage::findOrFail($id);
-        
-        
-        // dd($product);
+    public function addToCart(Request $request, $id){
+
+        $product = ProductPage::findOrFail($id);        
 
         $cart = session()->get('cart', []);
 
@@ -138,12 +136,15 @@ class ProductController extends Controller
             $cart[$product->id]['quantity'] += 1;
         } else {
             $cart[$product->id] = [
+                'id' => $product->id,
                 "name" => $product->title,
                 "quantity" => 1,
                 "price" => $product->price,
                 "photo" => $product->product_image
             ];
         }
+
+
         session()->put('cart', $cart);
 
 
@@ -154,20 +155,60 @@ class ProductController extends Controller
 
     }
 
+
+    public function detailsAddToCart(Request $request){
+        $validated = $request->validate([
+            'product_id' => 'required|exists:product_pages,id',
+            'quantity'   => 'required|numeric|min:1',
+            'action'     => 'required|string'
+        ]);
+
+
+        $product = ProductPage::findOrFail($validated['product_id']);
+
+        $cart = session()->get('cart', []);
+
+
+        if (isset($cart[$product->id])) {
+            $cart[$product->id]['quantity'] +=  $validated['quantity'] ?? 1;
+        } else {
+            $cart[$product->id] = [
+                'id' => $product->id,
+                "name" => $product->title,
+                "quantity" => $validated['quantity'] ?? 1,
+                "price" => $product->price,
+                "photo" => $product->product_image
+            ];
+        }
+
+
+        session()->put('cart', $cart);
+        
+        if($validated['action'] == 'buy_now'){
+
+            return redirect()->route('cheackout.page')->with('success', 'Product added to cart successfully!');
+        }
+        return redirect()->back()->with('success', 'Product added to cart successfully!');
+   
+    }
+
     public function clearCart(){
         session()->forget('cart');
         return redirect()->route('index.page')->with('success', 'Cart cleared successfully!');
     }
 
-    public function deleteCart($name){
+    public function deleteCart($id){
+
+        // dd($id);
+
         $cart= session()->get('cart', []);
 
-        if (isset($cart[$name])) {
-            unset($cart[$name]);
+        if (isset($cart[$id])) {
+            unset($cart[$id]);
             session()->put('cart', $cart);
         }
 
-        return redirect()->back()->with('success', 'Message deleted successfully!');
+        return redirect()->back()->with('success', ' cart iteam deleted successfully!');
     }
 
 
