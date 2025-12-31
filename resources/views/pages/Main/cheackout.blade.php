@@ -79,7 +79,7 @@
                                         @endphp
 
                                         @forelse ($cheackout as $key => $item)
-                                            {{--  {{ dd( $cheackout) }}  --}}
+                                            {{-- {{ dd( $cheackout) }} --}}
 
                                             <tr>
                                                 <td>{{ $i }}</td>
@@ -89,8 +89,24 @@
                                                 <td>{{ $item['name'] }}</td>
                                                 <td>{{ $item['price'] }}</td>
                                                 <td>x</td>
-                                                
-                                                <td>{{ $item['quantity'] }}</td>
+
+                                                <td>
+                                                    <form action="{{ route('cart.update', $item['id']) }}" method="POST"
+                                                        style="display:inline;">
+                                                        @csrf
+                                                        <input type="hidden" name="action" value="dec">
+                                                        <button style="border: none" type="submit">-</button>
+                                                    </form>
+
+                                                    <span>{{ $item['quantity'] }}</span>
+
+                                                    <form action="{{ route('cart.update', $item['id']) }}" method="POST"
+                                                        style="display:inline;">
+                                                        @csrf
+                                                        <input type="hidden" name="action" value="inc">
+                                                        <button style="border: none" type="submit">+</button>
+                                                    </form>
+                                                </td>
                                                 <td>{{ $item['price'] * $item['quantity'] }}</td>
 
                                                 <td>

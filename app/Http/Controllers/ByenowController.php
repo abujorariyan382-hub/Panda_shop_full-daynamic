@@ -146,4 +146,70 @@ class ByenowController extends Controller
         return redirect()->back()->with('success', ' payment iteam deleted successfully!');
 
     }
+
+    // public function inc(Request $request,$id){
+    //     // dd($request,$id);
+    //     $cart = session()->get('cart', []);
+
+    //     $id = $request->item_id;
+    //     // dd($id);
+    //     if (!isset($cart[$id])) {
+    //         return back();
+    //     }
+
+    //     if ($request->action === 'inc') {
+    //         $cart[$id]['quantity']++;
+    //     }
+
+    //     if ($request->action === 'dec' && $cart[$id]['quantity'] > 1) {
+    //         $cart[$id]['quantity']--;
+    //     }
+
+    //     session()->put('cart', $cart);
+
+    //     return back();
+    // }
+
+    public function updateQuantity(Request $request, $id)
+    {
+        $request->validate([
+            'action' => 'required|in:inc,dec'
+        ]);
+
+        $cart = session()->get('cart', []);
+
+        if (!isset($cart[$id])) {
+            return back()->with('error', 'Item not found in cart');
+        }
+
+        if ($request->action === 'inc') {
+            $cart[$id]['quantity']++;
+        }
+
+        if ($request->action === 'dec' && $cart[$id]['quantity'] > 1) {
+            $cart[$id]['quantity']--;
+        }
+
+        session()->put('cart', $cart);
+
+        return back();
+    }
+
+
+
+
+    public function deleteCart($id){
+
+        // dd($id);
+
+        $cart= session()->get('cart', []);
+
+        if (isset($cart[$id])) {
+            unset($cart[$id]);
+            session()->put('cart', $cart);
+        }
+
+        return redirect()->back()->with('success', ' cart iteam deleted successfully!');
+        
+    }
 }

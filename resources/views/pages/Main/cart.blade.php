@@ -10,7 +10,7 @@
 				<div class="row">
 					<div class="col-md-12 col-lg-8">
 						<table class="table">
-							<thead>
+							<thead class="table-light">
 								<tr>
 									<th>S.N</th>
 									<th>Image</th>
@@ -29,16 +29,32 @@
 								@endphp
 
 								@forelse ($cart as $key => $item)
-									{{--  {{ dd( $item) }}  --}}
+									{{-- {{ dd( $item) }} --}}
 
 									<tr>
 										<td>{{ $i }}</td>
 										<td>
-											<img width="80" src="{{ asset('storage/'. $item['photo']) }}" alt="">
+											<img width="80" src="{{ asset('storage/' . $item['photo']) }}" alt="">
 										</td>
 										<td>{{ $item['name'] }}</td>
 										<td>{{ $item['price'] }}</td>
-										<td>{{ $item['quantity'] }}</td>
+										<td>
+											<form action="{{ route('cart.update', $item['id']) }}" method="POST"
+												style="display:inline;">
+												@csrf
+												<input type="hidden" name="action" value="dec">
+												<button style="border: none" type="submit">-</button>
+											</form>
+
+											<span>{{ $item['quantity'] }}</span>
+
+											<form action="{{ route('cart.update', $item['id']) }}" method="POST"
+												style="display:inline;">
+												@csrf
+												<input type="hidden" name="action" value="inc">
+												<button style="border: none" type="submit">+</button>
+											</form>
+										</td>
 										<td>{{ $item['price'] * $item['quantity'] }}</td>
 
 										<td>
@@ -60,7 +76,7 @@
 								@endforelse
 
 
-								
+
 
 							</tbody>
 						</table>
@@ -84,9 +100,9 @@
 									class="price">{{ $shipping = 150 }}</span></div>
 							<div class="summary-item"><span class="text">Total</span><span
 									class="price">{{ $sub_total + $shipping }}</span></div>
-							<a href="{{ route('payment',$item['id']) }}" class="text-decoration-none"> <button type="button"
-									class="btn btn-primary btn-lg btn-block">Checkout</button> </a>
-									{{--  {{ dd($item) }}  --}}
+							<a href="{{ route('payment', $item['id']) }}" class="text-decoration-none"> <button
+									type="button" class="btn btn-primary btn-lg btn-block">Checkout</button> </a>
+							{{-- {{ dd($item) }} --}}
 						</div>
 
 					</div>

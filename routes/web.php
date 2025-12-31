@@ -80,7 +80,8 @@ Route::get('contact-message-delete/{email}',[ByenowController::class,'deleteMess
 //check out page
 
 Route::get('checkout/payment/{id}',[ByenowController::class,'payment'])->name('payment');
-Route::get('payment/delete/{id}',[ByenowController::class,'paymentdelete'])->name('payment.delete');
+Route::get('payment-delete-{id}',[ByenowController::class,'paymentdelete'])->name('payment.delete');
+Route::post('/cart/update/{id}', [ByenowController::class, 'updateQuantity'])->name('cart.update');
 
 
 Route::middleware([
